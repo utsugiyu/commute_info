@@ -1,6 +1,7 @@
 class InfosController < ApplicationController
 
   def new
+    @info = Info.new
   end
 
   def create
@@ -11,5 +12,5 @@ class InfosController < ApplicationController
 
   def destroy
   end
-  
+
 end
