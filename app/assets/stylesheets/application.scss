@@ -10,6 +10,22 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require_tree .
- *= require_self
+
  */
+@import 'bootstrap';
+
+.line2, .line3, .line4{
+  display: none;
+}
+
+.fa-clock-o{
+  padding-left: 3px;
+  padding-top: 10px;
+}
+
+.input-group-addon{
+  padding-right: 3px;
+  background-color: #E6E6E6;
+  border-top-right-radius : 3px;
+  border-bottom-right-radius : 3px;
+}

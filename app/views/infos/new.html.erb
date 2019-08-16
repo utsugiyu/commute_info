@@ -1,5 +1,7 @@
 <% provide(:title, '情報登録') %>
 
+
+
 <div class="col-sm-6 offset-sm-3 mt-4" >
   <%= form_for(@info, url:create_path) do |f| %>
 
@@ -8,17 +10,121 @@
         <%= f.text_field :station1, class: 'form-control' %>
     </div>
     <div class="form-group">
-      <%= f.label :station2 %>
+      <%= f.label :降車駅 %>
       <%= f.text_field :station2, class: 'form-control' %>
     </div>
-    <div class="form-group">
-      <%= f.label :route1 %>
-      <%= f.text_field :route1, class: 'form-control' %>
+    <div class="form-group line1">
+      <label class="my-1 mr-2" for="inlineFormCustomSelect">使用路線1</label>
+      <select class="custom-select select-line1" id="inlineFormCustomSelect">
+        <%= render "infos/lines" %>
+      </select>
     </div>
-    <div class="form-group">
-      <%= f.label :route2%>
-      <%= f.text_field :route2, class: 'form-control' %>
+
+    <div class="form-group line2">
+      <label class="my-1 mr-2" for="inlineFormCustomSelect">使用路線2</label>
+      <select class="custom-select  select-line2" id="inlineFormCustomSelect">
+        <%= render "infos/lines" %>
+      </select>
     </div>
-    <%= f.submit "ボタン", class: "btn btn-primary col-sm-6 offset-sm-3" %>
+
+    <div class="form-group line3">
+      <label class="my-1 mr-2" for="inlineFormCustomSelect">使用路線3</label>
+      <select class="custom-select  select-line3" id="inlineFormCustomSelect">
+        <%= render "infos/lines" %>
+      </select>
+    </div>
+
+    <div class="form-group line4">
+      <label class="my-1 mr-2" for="inlineFormCustomSelect">使用路線4</label>
+      <select class="custom-select  select-line4" id="inlineFormCustomSelect">
+        <%= render "infos/lines" %>
+      </select>
+    </div>
+
+    <script>
+      $(document).ready(function() {
+        $(".select-line1").change(function() {
+
+        var line1_val = $(".select-line1").val();
+
+        if(line1_val != "") {
+          $('.line2').css('display', 'block');
+        }else if(line1_val == "") {
+          $('.line2').css('display', 'none');
+        }
+        });
+
+        $(".select-line2").change(function() {
+
+        var line2_val = $(".select-line2").val();
+
+        if(line2_val != "") {
+          $('.line3').css('display', 'block');
+        }else if(line2_val == "") {
+          $('.line3').css('display', 'none');
+        }
+        });
+
+        $(".select-line3").change(function() {
+
+        var line3_val = $(".select-line3").val();
+
+        if(line3_val != "") {
+          $('.line4').css('display', 'block');
+        }else if(line3_val == "") {
+          $('.line4').css('display', 'none');
+        }
+        });
+      });
+    </script>
+
+    <div class="form-group">
+           <label>通知日時</label>
+           <br>
+           <div class="form-check form-check-inline">
+               <input class="form-check-input" type="checkbox" value="0">
+               <label class="form-check-label">日</label>
+           </div>
+           <div class="form-check form-check-inline">
+               <input class="form-check-input" type="checkbox" value="1">
+               <label class="form-check-label">月</label>
+           </div>
+           <div class="form-check form-check-inline">
+               <input class="form-check-input" type="checkbox" value="2">
+               <label class="form-check-label">火</label>
+           </div>
+           <div class="form-check form-check-inline">
+               <input class="form-check-input" type="checkbox" value="3">
+               <label class="form-check-label">水</label>
+           </div>
+           <div class="form-check form-check-inline">
+               <input class="form-check-input" type="checkbox" value="4">
+               <label class="form-check-label">木</label>
+           </div>
+           <div class="form-check form-check-inline">
+               <input class="form-check-input" type="checkbox" value="5">
+               <label class="form-check-label">金</label>
+           </div>
+           <div class="form-check form-check-inline">
+               <input class="form-check-input" type="checkbox" value="6">
+               <label class="form-check-label">土</label>
+           </div>
+       </div>
+
+       <div class="form-group">
+         <div class="input-group clockpicker col-sm-2">
+               <input type="text" class="form-control" value="00:00">
+               <span class="input-group-addon">
+                 <i class="fa fa-clock-o"></i>
+               </span>
+             </div>
+        </div>
+
+
+
+
+
+
+    <%= f.submit "登録", class: "btn btn-outline-secondary col-sm-6 offset-sm-3" %>
   <% end %>
 </div>
