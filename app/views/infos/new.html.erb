@@ -15,7 +15,7 @@
     </div>
     <div class="form-group line1">
       <label class="my-1 mr-2" for="inlineFormCustomSelect">使用路線1</label>
-      <select class="custom-select select-line1" id="inlineFormCustomSelect">
+      <select class="custom-select select-line1" id="inlineFormCustomSelect" name="line1" >
         <%= render "infos/lines" %>
       </select>
     </div>
@@ -112,6 +112,8 @@
        </div>
 
        <div class="form-group">
+         <label>行き</label>
+         <br>
          <div class="input-group clockpicker col-sm-2">
                <input type="text" class="form-control" value="00:00">
                <span class="input-group-addon">
@@ -120,11 +122,22 @@
              </div>
         </div>
 
+        <div class="form-group">
+          <label>帰り</label>
+          <br>
+          <div class="input-group clockpicker col-sm-2">
+                <input type="text" class="form-control" value="00:00">
+                <span class="input-group-addon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+              </div>
+         </div>
 
 
 
 
 
-    <%= f.submit "登録", class: "btn btn-outline-secondary col-sm-6 offset-sm-3" %>
+
+    <%= f.submit "登録", class: "btn btn-outline-secondary col-sm-6 offset-sm-3 mb-4" %>
   <% end %>
 </div>
