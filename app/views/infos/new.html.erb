@@ -115,7 +115,7 @@
          <label>行き</label>
          <br>
          <div class="input-group clockpicker col-sm-2">
-               <input type="text" class="form-control" value="00:00">
+               <input type="text" class="form-control" value="00:00" disabled="disabled">
                <span class="input-group-addon">
                  <i class="fa fa-clock-o"></i>
                </span>
@@ -126,7 +126,7 @@
           <label>帰り</label>
           <br>
           <div class="input-group clockpicker col-sm-2">
-                <input type="text" class="form-control" value="00:00">
+                <input type="text" class="form-control" value="00:00" disabled="disabled">
                 <span class="input-group-addon">
                   <i class="fa fa-clock-o"></i>
                 </span>
@@ -138,6 +138,6 @@
 
 
 
-    <%= f.submit "登録", class: "btn btn-outline-secondary col-sm-6 offset-sm-3 mb-4" %>
+    <%= f.submit "登録", class: "btn btn-outline-secondary col-sm-6 offset-sm-3 mb-5" %>
   <% end %>
 </div>

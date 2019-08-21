@@ -19,13 +19,18 @@
 }
 
 .fa-clock-o{
-  padding-left: 3px;
+  padding-left: 8px;
   padding-top: 10px;
 }
 
 .input-group-addon{
-  padding-right: 3px;
-  background-color: #E6E6E6;
+  padding-right: 8px;
+  background-color: #FFFAFA;
   border-top-right-radius : 3px;
   border-bottom-right-radius : 3px;
+  border:0.5px solid #c0c0c0;
+}
+
+.popover{
+  margin-bottom: 40px;
 }

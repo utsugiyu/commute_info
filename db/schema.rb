@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_14_085123) do
+ActiveRecord::Schema.define(version: 2019_08_21_054038) do
 
   create_table "infos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "station1", null: false
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 2019_08_14_085123) do
     t.string "line_user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "push_time2"
   end
 
 end
