@@ -5,9 +5,19 @@
   <body>
     <%= render "layouts/flash" %>
     <%= yield %>
-    <script type="text/javascript" src="http://weareoutman.github.io/clockpicker/dist/jquery-clockpicker.min.js"></script>
+    <script type="text/javascript" src="https://weareoutman.github.io/clockpicker/dist/jquery-clockpicker.min.js"></script>
     <script type="text/javascript">
-      $('.clockpicker').clockpicker();
+    $(function() {
+    $('.clockpicker').clockpicker({
+      'default': 'now',
+      vibrate: false,
+      placement: "top",
+      align: "left",
+      autoclose: false,
+      twelvehour: false
+    });
+    });
+
     </script>
   </body>
 </html>
