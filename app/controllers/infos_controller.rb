@@ -19,7 +19,7 @@ class InfosController < ApplicationController
 
   signature = request.env['HTTP_X_LINE_SIGNATURE']
   unless client.validate_signature(body, signature)
-    error 400 do 'Bad Request' end
+    head :bad_request
   end
 
   events = client.parse_events_from(body)
@@ -54,8 +54,8 @@ class InfosController < ApplicationController
         "type": "template",
         "altText": "this is a link template",
         "template": {
-            "type": "confirm",
-            "text": "下のリンクを開いてください",
+          type: 'buttons',
+          text: '下のリンクから登録してください',
             "actions": [
                 {
                   "type": 'uri',
