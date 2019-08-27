@@ -1,0 +1,12 @@
+ja:
+  activerecord:
+    models:
+      info: 情報
+    attributes:
+      info:
+        station1: 乗車駅
+        station2: 降車駅
+        route1: 使用路線1
+        day: 曜日
+        push_time: 行きの時刻
+        push_time2: 帰りの時刻

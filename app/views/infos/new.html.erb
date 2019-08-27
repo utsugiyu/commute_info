@@ -3,7 +3,10 @@
 
 
 <div class="col-sm-6 offset-sm-3 mt-4" >
-  <%= form_for(@info, url:create_path) do |f| %>
+  <%= form_for(@info, url: "/create?line_user_id=#{params[:line_user_id]}") do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
+
+    <%= f.hidden_field :line_user_id, :value => params[:line_user_id] %>
 
     <div class="form-group">
         <%= f.label :乗車駅 %>
@@ -16,64 +19,39 @@
 
     <div class="form-group line1">
       <%= f.label :使用路線1, class: "my-1 mr-2" %>
-      <%= f.select :route1, @lines,  {prompt: "会社ごと、五十音順"}, {class: "custom-select select-line1 form-control"} %>
+      <%= f.select :route1, @lines,  {include_blank: "--会社ごと、五十音順--"}, {class: "custom-select select-line1 form-control"} %>
     </div>
 
     <div class="form-group line2">
       <%= f.label :使用路線2, class: "my-1 mr-2" %>
-      <%= f.select :route2, @lines,  {prompt: "会社ごと、五十音順"}, {class: "custom-select select-line2 form-control"} %>
+      <%= f.select :route2, @lines,  {include_blank: "--会社ごと、五十音順--"}, {class: "custom-select select-line2 form-control"} %>
     </div>
 
     <div class="form-group line3">
       <%= f.label :使用路線3, class: "my-1 mr-2" %>
-      <%= f.select :route3, @lines,  {prompt: "会社ごと、五十音順"}, {class: "custom-select select-line3 form-control"} %>
+      <%= f.select :route3, @lines,  {include_blank: "--会社ごと、五十音順--"}, {class: "custom-select select-line3 form-control"} %>
     </div>
 
     <div class="form-group line4">
       <%= f.label :使用路線4, class: "my-1 mr-2" %>
-      <%= f.select :route1, @lines,  {prompt: "会社ごと、五十音順"}, {class: "custom-select select-line4 form-control"} %>
+      <%= f.select :route4, @lines,  {include_blank: "--会社ごと、五十音順--"}, {class: "custom-select select-line4 form-control"} %>
     </div>
 
     <%= render "infos/linescript" %>
-
     <div class="form-group ">
       <%= f.label :通知日時, class: "my-1 mr-2" %>
       <br />
-       <div class="form-check form-check-inline">
-           <input class="form-check-input" type="checkbox" value="0" name="info[day]">
-           <label class="form-check-label">日</label>
-       </div>
-       <div class="form-check form-check-inline">
-           <input class="form-check-input" type="checkbox" value="1" name="info[day]">
-           <label class="form-check-label">月</label>
-       </div>
-       <div class="form-check form-check-inline">
-           <input class="form-check-input" type="checkbox" value="2" name="info[day]">
-           <label class="form-check-label">火</label>
-       </div>
-       <div class="form-check form-check-inline">
-           <input class="form-check-input" type="checkbox" value="3" name="info[day]">
-           <label class="form-check-label">水</label>
-       </div>
-       <div class="form-check form-check-inline">
-           <input class="form-check-input" type="checkbox" value="4" name="info[day]">
-           <label class="form-check-label">木</label>
-       </div>
-       <div class="form-check form-check-inline">
-           <input class="form-check-input" type="checkbox" value="5" name="info[day]">
-           <label class="form-check-label">金</label>
-       </div>
-       <div class="form-check form-check-inline">
-           <input class="form-check-input" type="checkbox" value="6" name="info[day]">
-           <label class="form-check-label">土</label>
-       </div>
-      </div>
+
+    <%= render "infos/checkbox" %>
+    </div>
+
+
 
        <div class="form-group">
          <label>行き</label>
          <br>
          <div class="input-group clockpicker col-sm-2">
-               <input type="text" class="form-control" value="00:00" disabled="disabled" name="info[push_time]">
+               <input type="text" class="form-control" value="<%= @info.push_time %>" name="info[push_time]" readonly>
                <span class="input-group-addon">
                  <i class="fa fa-clock-o"></i>
                </span>
@@ -84,12 +62,14 @@
           <label>帰り</label>
           <br>
           <div class="input-group clockpicker col-sm-2">
-                <input type="text" class="form-control" value="00:00" disabled="disabled" name="info[push_time2]">
+                <input type="text" class="form-control" value="<%= @info.push_time2 %>" name="info[push_time2]" readonly>
                 <span class="input-group-addon">
                   <i class="fa fa-clock-o"></i>
                 </span>
               </div>
          </div>
+
+
 
 
 

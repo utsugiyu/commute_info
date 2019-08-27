@@ -1,0 +1,19 @@
+<% if object.errors.any? %>
+  <div id="error_explanation">
+    <div class="alert alert-danger">
+      <% if  object.errors.count == 1%>
+        The form contains error.
+      <% else %>
+        The form contains error.
+      <%end%>
+    </div>
+    <ul>
+    <% object.errors.full_messages.each do |msg| %>
+      <% if msg.include?('Long') %>
+      <% else %>
+        <li><%= msg %></li>
+      <% end %>
+    <% end %>
+    </ul>
+  </div>
+<% end %>

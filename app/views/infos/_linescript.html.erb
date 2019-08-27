@@ -1,5 +1,16 @@
 <script>
   $(document).ready(function() {
+
+    var line1_val = $(".select-line1").val();
+
+    if(line1_val != "") {
+      $('.line2').css('display', 'block');
+    }else if(line1_val == "") {
+      $('.line2').css('display', 'none');
+      $('.line3').css('display', 'none');
+      $('.line4').css('display', 'none');
+    };
+
     $(".select-line1").change(function() {
 
     var line1_val = $(".select-line1").val();
@@ -13,6 +24,15 @@
     }
     });
 
+    var line2_val = $(".select-line2").val();
+
+    if(line2_val != "") {
+      $('.line3').css('display', 'block');
+    }else if(line2_val == "") {
+      $('.line3').css('display', 'none');
+      $('.line4').css('display', 'none');
+    };
+
     $(".select-line2").change(function() {
 
     var line2_val = $(".select-line2").val();
@@ -24,6 +44,14 @@
       $('.line4').css('display', 'none');
     }
     });
+
+    var line3_val = $(".select-line3").val();
+
+    if(line3_val != "") {
+      $('.line4').css('display', 'block');
+    }else if(line3_val == "") {
+      $('.line4').css('display', 'none');
+    };
 
     $(".select-line3").change(function() {
 
