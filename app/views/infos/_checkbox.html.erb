@@ -1,83 +1,55 @@
 
    <div class="form-check form-check-inline">
-      <% if @info.day %>
-        <% if @info.day.include?('0') %>
-          <input class="form-check-input" type="checkbox" value="0" name="info[day][]" checked>
-        <% else %>
-          <input class="form-check-input" type="checkbox" value="0" name="info[day][]">
-        <% end %>
+      <% if @info.day && @info.day.include?('0') %>
+        <input class="form-check-input" type="checkbox" value="0" name="info[day][]" checked>
       <% else %>
         <input class="form-check-input" type="checkbox" value="0" name="info[day][]">
       <% end %>
       <label class="form-check-label">日</label>
    </div>
    <div class="form-check form-check-inline">
-     <% if @info.day %>
-       <% if @info.day.include?('1') %>
-         <input class="form-check-input" type="checkbox" value="1" name="info[day][]" checked>
-       <% else %>
-         <input class="form-check-input" type="checkbox" value="1" name="info[day][]">
-       <% end %>
+     <% if @info.day && @info.day.include?('1') %>
+       <input class="form-check-input" type="checkbox" value="1" name="info[day][]" checked>
      <% else %>
        <input class="form-check-input" type="checkbox" value="1" name="info[day][]">
      <% end %>
      <label class="form-check-label">月</label>
    </div>
    <div class="form-check form-check-inline">
-     <% if @info.day %>
-       <% if @info.day.include?('2') %>
-         <input class="form-check-input" type="checkbox" value="2" name="info[day][]" checked>
-       <% else %>
-         <input class="form-check-input" type="checkbox" value="2" name="info[day][]">
-       <% end %>
+     <% if @info.day && @info.day.include?('2') %>
+       <input class="form-check-input" type="checkbox" value="2" name="info[day][]" checked>
      <% else %>
        <input class="form-check-input" type="checkbox" value="2" name="info[day][]">
      <% end %>
      <label class="form-check-label">火</label>
    </div>
    <div class="form-check form-check-inline">
-     <% if @info.day %>
-       <% if @info.day.include?('3') %>
-         <input class="form-check-input" type="checkbox" value="3" name="info[day][]" checked>
-       <% else %>
-         <input class="form-check-input" type="checkbox" value="3" name="info[day][]">
-       <% end %>
+     <% if @info.day && @info.day.include?('3') %>
+       <input class="form-check-input" type="checkbox" value="3" name="info[day][]" checked>
      <% else %>
        <input class="form-check-input" type="checkbox" value="3" name="info[day][]">
      <% end %>
      <label class="form-check-label">水</label>
    </div>
    <div class="form-check form-check-inline">
-     <% if @info.day %>
-       <% if @info.day.include?('4') %>
-         <input class="form-check-input" type="checkbox" value="4" name="info[day][]" checked>
-       <% else %>
-         <input class="form-check-input" type="checkbox" value="4" name="info[day][]">
-       <% end %>
+     <% if @info.day && @info.day.include?('4') %>
+       <input class="form-check-input" type="checkbox" value="4" name="info[day][]" checked>
      <% else %>
        <input class="form-check-input" type="checkbox" value="4" name="info[day][]">
      <% end %>
      <label class="form-check-label">木</label>
    </div>
    <div class="form-check form-check-inline">
-     <% if @info.day %>
-       <% if @info.day.include?('5') %>
-         <input class="form-check-input" type="checkbox" value="5" name="info[day][]" checked>
-       <% else %>
-         <input class="form-check-input" type="checkbox" value="5" name="info[day][]">
-       <% end %>
+     <% if @info.day && @info.day.include?('5') %>
+       <input class="form-check-input" type="checkbox" value="5" name="info[day][]" checked>
      <% else %>
        <input class="form-check-input" type="checkbox" value="5" name="info[day][]">
      <% end %>
      <label class="form-check-label">金</label>
    </div>
    <div class="form-check form-check-inline">
-     <% if @info.day %>
-       <% if @info.day.include?('6') %>
-         <input class="form-check-input" type="checkbox" value="6" name="info[day][]" checked>
-       <% else %>
-         <input class="form-check-input" type="checkbox" value="6" name="info[day][]">
-       <% end %>
+     <% if @info.day && @info.day.include?('6') %>
+       <input class="form-check-input" type="checkbox" value="6" name="info[day][]" checked>
      <% else %>
        <input class="form-check-input" type="checkbox" value="6" name="info[day][]">
      <% end %>
