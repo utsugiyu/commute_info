@@ -6,7 +6,7 @@ class Info < ApplicationRecord
   validates :route1, presence: true
   validates :day, presence: true
   validates :push_time, presence: true
-    validates :push_time2, presence: true
+  validates :push_time2, presence: true
   validates :line_user_id, presence: true
 
 
