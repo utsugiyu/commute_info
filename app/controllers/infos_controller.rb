@@ -179,7 +179,7 @@ class InfosController < ApplicationController
     if @info.station2.empty?
     elsif !@info.station2.empty? && !@info.station2.include?("駅")
       @info.station2 << "駅"
-      results2 = Geocoder.search(@info.station1)
+      results2 = Geocoder.search(@info.station2)
       @info.longitude_latitude2 = results2.first.coordinates.join(',')
     else
       results2 = Geocoder.search(@info.station2)
