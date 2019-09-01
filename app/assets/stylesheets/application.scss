@@ -34,3 +34,16 @@
 .popover{
   margin-bottom: 40px;
 }
+
+.infos{
+  list-style: none;
+  li {
+  overflow: auto;
+  padding: 10px 0;
+  border-bottom: 1px solid #c0c0c0;
+ }
+}
+
+ul{
+  list-style: none;
+}

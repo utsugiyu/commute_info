@@ -199,6 +199,7 @@ class InfosController < ApplicationController
   end
 
   def index
+    @infos = Info.where(line_user_id: params[:line_user_id])
   end
 
   def destroy
@@ -222,7 +223,9 @@ class InfosController < ApplicationController
         if event.message['text'].include?('登録')
           @line_user_id = event['source']['userId']
           client.reply_message(event['replyToken'], template)
-        #elsif event.message['text'].include?('削除')
+        elsif event.message['text'].include?('削除') || event.message['text'].include?('編集')
+          @line_user_id = event['source']['userId']
+          client.reply_message(event['replyToken'], template2)
         end
       end
     end
@@ -258,6 +261,25 @@ class InfosController < ApplicationController
                   "label": "情報登録",
                   #commuteinfoにパラメーターを足してみる！！！！！！！！！
                   "uri": "https://commute-info.net?line_user_id=#{@line_user_id}"
+                }
+            ]
+        }
+      }
+    end
+
+    def template2
+      {
+        "type": "template",
+        "altText": "this is a link template2",
+        "template": {
+          type: 'buttons',
+          text: '下のリンクから編集or削除を行ってください',
+            "actions": [
+                {
+                  "type": 'uri',
+                  "label": "登録情報一覧",
+                  #commuteinfoにパラメーターを足してみる！！！！！！！！！
+                  "uri": "https://commute-info.net/index?line_user_id=#{@line_user_id}"
                 }
             ]
         }

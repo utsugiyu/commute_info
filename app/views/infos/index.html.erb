@@ -1,3 +1,32 @@
-<% provide(:title, '通知一覧') %>
+<% provide(:title, '登録情報一覧') %>
 
-<h1>Infos#index</h1>
+
+<% if @infos.any? %>
+  <ul class="infos col-sm-6 offset-sm-3 mt-4">
+    <% @infos.each do |info| %>
+      <% days = info.day
+         days.gsub!("0", "日")
+         days.gsub!("1", "月")
+         days.gsub!("2", "火")
+         days.gsub!("3", "水")
+         days.gsub!("4", "木")
+         days.gsub!("5", "金")
+         days.gsub!("6", "土")
+         days = days.chars
+         days = days.join(', ')
+       %>
+      <li>
+        <b><%= "#{info.station1} <=> #{info.station2}"%></b><br>
+        《曜日》<%= days %><br>
+        《時間》[<%= info.push_time %>] [<%= info.push_time2 %>]<br>
+        <div class="text-right">
+          <%= link_to("編集", "/infos/#{info.id}/edit")%>　<%= link_to("削除", "/infos/#{info.id}, method: :dalete")%>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <div class="noninfo col-sm-6 offset-sm-3 mt-4 text-center">
+    登録情報がまだありません。
+  </div>
+<% end %>
