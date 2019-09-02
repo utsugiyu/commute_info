@@ -20,7 +20,7 @@
         《曜日》<%= days %><br>
         《時間》[<%= info.push_time %>] [<%= info.push_time2 %>]<br>
         <div class="text-right">
-          <%= link_to("編集", "/infos/#{info.id}/edit")%>　<%= link_to("削除", "/infos/#{info.id}, method: :dalete")%>
+          <%= link_to("編集", "/infos/#{info.id}/edit")%>　<%= link_to("削除", "/infos/#{info.id}", method: :delete, data: { confirm: '削除しますか？' })%>
         </div>
       </li>
     <% end %>

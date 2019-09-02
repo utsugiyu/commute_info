@@ -203,6 +203,11 @@ class InfosController < ApplicationController
   end
 
   def destroy
+    @info = Info.find(params[:id])
+    line_user_id = @info.line_user_id
+    @info.destroy
+    flash[:info] = "情報が削除されました。"
+    redirect_to("/index?line_user_id=#{line_user_id}")
   end
 
   def callback
@@ -273,7 +278,7 @@ class InfosController < ApplicationController
         "altText": "this is a link template2",
         "template": {
           type: 'buttons',
-          text: '下のリンクから編集or削除を行ってください',
+          text: '下のリンクから「編集」or「削除」を行ってください',
             "actions": [
                 {
                   "type": 'uri',
