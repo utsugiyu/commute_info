@@ -1,7 +1,6 @@
 <% provide(:title, '情報登録') %>
 
-
-
+<% if @line_user_id.nil? %>
 <div class="col-sm-6 offset-sm-3 mt-4" >
   <%= form_for(@info, url: "/create?line_user_id=#{params[:line_user_id]}") do |f| %>
     <%= render 'shared/error_messages', object: f.object %>
@@ -79,3 +78,86 @@
     <%= f.submit "登録", class: "btn btn-outline-secondary col-sm-6 offset-sm-3 mb-5 mt-3" %>
   <% end %>
 </div>
+<% elsif @line_user_id.empty? %>
+  <div class="noninfo col-sm-6 offset-sm-3 mt-4 text-center">
+    <b style="color:#ff0000;">＊注意＊</b><br />LINEからアクセスしてください。 => ID:@624aybaw
+  </div>
+<%else%>
+<div class="col-sm-6 offset-sm-3 mt-4" >
+  <%= form_for(@info, url: "/create?line_user_id=#{params[:line_user_id]}") do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
+
+    <%= f.hidden_field :line_user_id, :value => params[:line_user_id] %>
+
+    <div class="form-group">
+        <%= f.label :乗車駅 %>
+        <%= f.text_field :station1, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :降車駅 %>
+      <%= f.text_field :station2, class: 'form-control' %>
+    </div>
+
+    <div class="form-group line1">
+      <%= f.label :使用路線1, class: "my-1 mr-2" %>
+      <%= f.select :route1, @lines,  {include_blank: "--会社ごと、五十音順--"}, {class: "custom-select select-line1 form-control"} %>
+    </div>
+
+    <div class="form-group line2">
+      <%= f.label :使用路線2, class: "my-1 mr-2" %>
+      <%= f.select :route2, @lines,  {include_blank: "--会社ごと、五十音順--"}, {class: "custom-select select-line2 form-control"} %>
+    </div>
+
+    <div class="form-group line3">
+      <%= f.label :使用路線3, class: "my-1 mr-2" %>
+      <%= f.select :route3, @lines,  {include_blank: "--会社ごと、五十音順--"}, {class: "custom-select select-line3 form-control"} %>
+    </div>
+
+    <div class="form-group line4">
+      <%= f.label :使用路線4, class: "my-1 mr-2" %>
+      <%= f.select :route4, @lines,  {include_blank: "--会社ごと、五十音順--"}, {class: "custom-select select-line4 form-control"} %>
+    </div>
+
+    <%= render "infos/linescript" %>
+    <div class="form-group ">
+      <%= f.label :通知日時, class: "my-1 mr-2" %>
+      <br />
+
+    <%= render "infos/checkbox" %>
+    </div>
+
+
+
+       <div class="form-group">
+         <label>行き</label>
+         <br>
+         <div class="input-group clockpicker col-sm-2">
+               <input type="text" class="form-control" value="<%= @info.push_time %>" name="info[push_time]" readonly>
+               <span class="input-group-addon">
+                 <i class="fa fa-clock-o"></i>
+               </span>
+             </div>
+        </div>
+
+        <div class="form-group">
+          <label>帰り</label>
+          <br>
+          <div class="input-group clockpicker col-sm-2">
+                <input type="text" class="form-control" value="<%= @info.push_time2 %>" name="info[push_time2]" readonly>
+                <span class="input-group-addon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+              </div>
+         </div>
+
+
+
+
+
+
+
+
+    <%= f.submit "登録", class: "btn btn-outline-secondary col-sm-6 offset-sm-3 mb-5 mt-3" %>
+  <% end %>
+</div>
+<%end%>

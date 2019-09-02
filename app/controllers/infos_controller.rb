@@ -1,5 +1,9 @@
 class InfosController < ApplicationController
-  require 'line/bot'
+  before_action :has_param_line_user_id_param, only: [:new, :index]
+  before_action :access_from_index, only: [:edit]
+  before_action :invalid_access1, only: [:destroy]
+  before_action :invalid_access2, only: [:create]
+  before_action :invalid_access3, only: [:update]
 
 
   def new
@@ -199,6 +203,7 @@ class InfosController < ApplicationController
   end
 
   def index
+    has_param_line_user_id_param
     @infos = Info.where(line_user_id: params[:line_user_id])
   end
 
@@ -441,6 +446,9 @@ class InfosController < ApplicationController
   head :ok
   end
 
+  def access
+  end
+
   private
 
     def info_params
@@ -491,6 +499,41 @@ class InfosController < ApplicationController
             ]
         }
       }
+    end
+
+    def has_param_line_user_id_param
+      @line_user_id = ""
+      if params[:line_user_id]
+        @line_user_id = params[:line_user_id]
+      end
+    end
+
+    def access_from_index
+      if !request.referer
+        @access_warn = ""
+      elsif request.referer && !request.referer.include?("/index?line_user_id=#{Info.find(params[:id]).line_user_id}")
+        @access_warn = ""
+      end
+    end
+
+    def invalid_access1
+      unless request.referer && request.referer.include?("/index?line_user_id=#{Info.find(params[:id]).line_user_id}")
+        redirect_to "/invalid-access"
+      end
+    end
+
+    def invalid_access2
+      if request.referer && request.referer.include?("commute-info.net/?line_user_id=")
+      elsif request.referer && request.referer.include?("create")
+      else
+        redirect_to "/invalid-access"
+      end
+    end
+
+    def invalid_access3
+      unless request.referer && request.referer.include?("/edit")
+        redirect_to "/invalid-access"
+      end
     end
 
 end

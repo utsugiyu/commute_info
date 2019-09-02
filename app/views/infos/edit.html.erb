@@ -1,5 +1,10 @@
 <% provide(:title, '編集画面') %>
 
+<%if !@access_warn.nil? %>
+<div class="noninfo col-sm-6 offset-sm-3 mt-4 text-center">
+  <b style="color:#ff0000;">＊注意＊</b><br />LINEからアクセスしてください。 => ID:@624aybaw
+</div>
+<%else%>
 <div class="col-sm-6 offset-sm-3 mt-4" >
   <%= form_for(@info, url: "/infos/#{@info.id}/edit") do |f| %>
     <%= render 'shared/error_messages', object: f.object %>
@@ -77,3 +82,4 @@
     <%= f.submit "登録", class: "btn btn-outline-secondary col-sm-6 offset-sm-3 mb-5 mt-3" %>
   <% end %>
 </div>
+<%end%>

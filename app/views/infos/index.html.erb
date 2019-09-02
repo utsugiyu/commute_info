@@ -1,7 +1,10 @@
 <% provide(:title, '登録情報一覧') %>
 
-
-<% if @infos.any? %>
+<% if @line_user_id.empty? %>
+<div class="noninfo col-sm-6 offset-sm-3 mt-4 text-center">
+  <b style="color:#ff0000;">＊注意＊</b><br />LINEからアクセスしてください。 => ID:@624aybaw
+</div>
+<% elsif @infos.any? %>
   <ul class="infos col-sm-6 offset-sm-3 mt-4">
     <% @infos.each do |info| %>
       <% days = info.day
