@@ -26,7 +26,7 @@ gem 'line-bot-api'
 gem 'geocoder'
 gem 'rails-i18n'
 gem 'whenever', :require => false
-
+gem 'encryptor'
 
 
 # Use Redis adapter to run Action Cable in production

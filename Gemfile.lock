@@ -82,6 +82,7 @@ GEM
     dotenv-rails (2.7.5)
       dotenv (= 2.7.5)
       railties (>= 3.2, < 6.1)
+    encryptor (3.0.0)
     erubi (1.8.0)
     execjs (2.7.0)
     ffi (1.11.1)
@@ -265,6 +266,7 @@ DEPENDENCIES
   capybara (>= 2.15)
   coffee-rails (~> 4.2)
   dotenv-rails
+  encryptor
   geocoder
   guard (= 2.13.0)
   guard-minitest (= 2.4.4)

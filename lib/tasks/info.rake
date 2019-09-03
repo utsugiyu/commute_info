@@ -1,3 +1,5 @@
+
+
 namespace :info do
   desc "該当日時の登録情報があれば気温、降水確率、運行情報を取得して通知する"
   task get_info1: :environment do
@@ -111,7 +113,13 @@ namespace :info do
           config.channel_secret = ENV["LINE_CHANNEL_SECRET"]
           config.channel_token = ENV["LINE_CHANNEL_TOKEN"]
         }
-        response = client.push_message(info.line_user_id, message)
+
+        secret = ENV['SECRET']
+        iv = ENV['IV']
+
+        decrypt_line_user_id = Encryptor.decrypt(value: Base64.urlsafe_decode64(info.line_user_id), key: secret, iv: iv).encode!('utf-8')
+
+        response = client.push_message(decrypt_line_user_id, message)
         p response
       end #大枠のeach
     end #if infos
@@ -189,7 +197,14 @@ namespace :info do
           config.channel_secret = ENV["LINE_CHANNEL_SECRET"]
           config.channel_token = ENV["LINE_CHANNEL_TOKEN"]
         }
-        response = client.push_message(info.line_user_id, message)
+
+        secret = ENV['SECRET']
+        iv = ENV['IV']
+
+        decrypt_line_user_id = Encryptor.decrypt(value: Base64.urlsafe_decode64(info.line_user_id), key: secret, iv: iv).encode!('utf-8')
+
+        response = client.push_message(decrypt_line_user_id, message)
+
         p response
       end
     end

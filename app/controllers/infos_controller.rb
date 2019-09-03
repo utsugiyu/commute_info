@@ -427,16 +427,21 @@ class InfosController < ApplicationController
 
   events = client.parse_events_from(body)
 
+  secret = ENV['SECRET']
+  iv = ENV['IV']
+
   events.each { |event|
     case event
     when Line::Bot::Event::Message
       case event.type
       when Line::Bot::Event::MessageType::Text
         if event.message['text'].include?('登録')
-          @line_user_id = event['source']['userId']
+          source_line_user_id = event['source']['userId']
+          @line_user_id = Base64.urlsafe_encode64(Encryptor.encrypt(value: source_line_user_id, key: secret, iv: iv)).encode('utf-8')
           client.reply_message(event['replyToken'], template)
         elsif event.message['text'].include?('削除') || event.message['text'].include?('編集')
-          @line_user_id = event['source']['userId']
+          source_line_user_id = event['source']['userId']
+          @line_user_id = Base64.urlsafe_encode64(Encryptor.encrypt(value: source_line_user_id, key: secret, iv: iv)).encode('utf-8')
           client.reply_message(event['replyToken'], template2)
         end
       end
