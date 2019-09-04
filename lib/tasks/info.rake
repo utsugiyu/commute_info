@@ -46,7 +46,31 @@ namespace :info do
 
         #通知する最高気温と最高降水確率
         push_temp = temps.max.round.to_s
-        push_prob = (probs.max * 100).round.to_s
+
+        prob = (probs.max * 100).round
+        if prob == 0
+          push_prob = "0"
+        elsif prob > 0 && prob <= 2
+          push_prob = "10"
+        elsif prob > 2 && prob <= 9
+          push_prob = "20"
+        elsif prob > 9 && prob <= 14
+          push_prob = "30"
+        elsif prob > 14 && prob <= 19
+          push_prob = "40"
+        elsif prob > 19 && prob <= 24
+          push_prob = "50"
+        elsif prob > 24 && prob <= 34
+          push_prob = "60"
+        elsif prob > 34 && prob <= 44
+          push_prob = "70"
+        elsif prob > 44 && prob <= 54
+          push_prob = "80"
+        elsif prob > 54 && prob <= 64
+          push_prob = "90"
+        elsif prob > 64
+          push_prob = "100"
+        end
 
         #ここからは運行情報の取得
         uri3 = URI.parse("https://tetsudo.rti-giken.jp/free/delay.json")
@@ -107,7 +131,7 @@ namespace :info do
 
         message = {
           type: 'text',
-          text: "#{info.station1} <=> #{info.station2}の通勤情報(行き)\n\n《最高気温》\n#{push_temp}°C\n\n《最高降水確率》\n#{push_prob}％\n\n《運行情報》\n#{delay_mes}"
+          text: "#{info.station1} <=> #{info.station2}の通勤情報(行き)\n\n《最高気温》\n#{push_temp}°C\n\n《最高降水確率》\n#{push_prob}％\n\n《運行情報》\n#{delay_mes}\n\n\npowered by Dark Sky"
         }
         client = Line::Bot::Client.new { |config|
           config.channel_secret = ENV["LINE_CHANNEL_SECRET"]

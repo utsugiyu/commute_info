@@ -471,7 +471,7 @@ class InfosController < ApplicationController
     def template
       {
         "type": "template",
-        "altText": "this is a link template",
+        "altText": "リンクから情報を登録してください",
         "template": {
           type: 'buttons',
           text: '下のリンクから登録してください',
@@ -490,7 +490,7 @@ class InfosController < ApplicationController
     def template2
       {
         "type": "template",
-        "altText": "this is a link template2",
+        "altText": "リンクから編集や削除を行ってください",
         "template": {
           type: 'buttons',
           text: '下のリンクから「編集」or「削除」を行ってください',
