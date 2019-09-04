@@ -4,11 +4,15 @@
       エラーがあります。
     </div>
     <ul>
-    <% object.errors.full_messages.each do |msg| %>
-      <% if msg.include?('Long') %>
-      <% else %>
+    <% messages =  object.errors.full_messages %>
+    <% if messages.include?("乗車駅を入力してください") && messages.include?("乗車駅に実在する駅を入力してください") %>
+      <% messages.delete("乗車駅に実在する駅を入力してください") %>
+    <% end %>
+    <% if messages.include?("降車駅を入力してください") && messages.include?("降車駅に実在する駅を入力してください") %>
+      <% messages.delete("降車駅に実在する駅を入力してください") %>
+    <% end %>
+    <% messages.each do |msg| %>
         <li><%= msg %></li>
-      <% end %>
     <% end %>
     </ul>
   </div>

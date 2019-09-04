@@ -10,3 +10,5 @@ ja:
         day: 曜日
         push_time: 行きの時刻
         push_time2: 帰りの時刻
+        longitude_latitude1: 乗車駅に実在する駅
+        longitude_latitude2: 降車駅に実在する駅
