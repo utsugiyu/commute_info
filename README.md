@@ -1,7 +1,7 @@
 Name
 ====
 
-### 通勤情報bot 関東版(LINE ID: @624aybaw)
+### 東京近郊　通勤情報bot (LINE ID: @624aybaw)
 [![Image from Gyazo](https://i.gyazo.com/eaeea6bd98cc7b555e051fa0e971f3ec.png)](https://gyazo.com/eaeea6bd98cc7b555e051fa0e971f3ec)
 
 ## Description
