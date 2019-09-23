@@ -15,7 +15,8 @@ class InfoTest < ActiveSupport::TestCase
                     route3:"",
                     route4:"",
                     day: "1256",
-                    push_time: "1030",
+                    push_time: "10:30",
+                    push_time2: "19:00",
                     line_user_id: "xxxxxx"
                     )
     assert @info.valid?
@@ -32,6 +33,7 @@ class InfoTest < ActiveSupport::TestCase
                     route4:"",
                     day: "1256",
                     push_time: "1030",
+                    push_time2: "19:00",
                     line_user_id: "xxxxxx"
                     )
     assert_not @info.valid?
