@@ -1,6 +1,5 @@
 Name
 ====
-
 ### 東京近郊　通勤情報bot (LINE ID: @624aybaw)
 [![Image from Gyazo](https://i.gyazo.com/eaeea6bd98cc7b555e051fa0e971f3ec.png)](https://gyazo.com/eaeea6bd98cc7b555e051fa0e971f3ec)
 
@@ -49,19 +48,13 @@ LINE上での通知となるので、LINEへの登録と上記公式アカウン
 ↑登録情報一覧
 
 ## APIs
-<br>
-
 * [Google Geocoding API](https://developers.google.com/maps/documentation/geocoding/start)
 * [Dark Sky API](https://darksky.net/dev)
 * [鉄道遅延情報のjson](https://rti-giken.jp/fhc/api/train_tetsudo/)
 * [LINE Messaging API](https://developers.line.biz/ja/services/messaging-api/)
 
 ## Operating environment
-<br>
-
 * AWS (  EC2 + RDS(MySQL 5.7.22)  )
 * Ruby 2.6.3
 * Ruby on Rails 5.2.3
 
-## Author
-[Yu Utsugi](https://twitter.com/YuUtsugi)
